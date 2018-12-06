@@ -9,7 +9,7 @@ RUN /usr/local/bin/install-plugins.sh configuration-as-code configuration-as-cod
 # Root user for permissions
 USER root
 # Install stuff needed in for builds. If using seperate slave nodes not necessary
-RUN apk --no-cache add docker && apk add sudo && apk update && apk add py-pip
+RUN apk --no-cache add docker && apk --no-cache add sudo && apk --no-cache add py-pip && apk update
 RUN pip install docker-compose
 # Give jenkins access to docker with sudo. (Safer than adding jenkins to docker group)
 RUN echo "jenkins ALL=(ALL) NOPASSWD: /usr/bin/docker" >> /etc/sudoers
